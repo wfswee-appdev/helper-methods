@@ -8,29 +8,6 @@
   <div>
     <%= label_tag :title, "Title"%>
 
-    <%= text_field_tag :title, @movie.title %>
-  </div>
-
-  <div>
-    <%= label_tag :description, "Description"%>
-    <%= text_area_tag :description, @movie.description, rows: 3 %>
-  </div>
-
-  <%= button_tag "Create movie" %>
-
-<% end %>
-
-
-
-
-
-
-
-
-<%= form_with(url: movies_path) do %>
-  <div>
-    <%= label_tag :title, "Title"%>
-
     <%= text_field_tag "movie[title]", @movie.title %>
   </div>
 
@@ -42,6 +19,3 @@
   <%= button_tag "Create movie" %>
 
 <% end %>
-
-
-{ :movie => { :title => "Some title", :description => "Whatever description" } }
