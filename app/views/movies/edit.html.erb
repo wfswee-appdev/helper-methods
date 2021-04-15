@@ -6,14 +6,14 @@
 
 <%= form_with(url: movie_path(@movie), method: :patch) do %>
   <div>
-    <%= label_tag :title%>
+    <%= label_tag :title, "Title"%>
 
-    <%= text_field_tag :title, @movie.title %>
+    <%= text_field_tag "movie[title]", @movie.title %>
   </div>
 
   <div>
-    <%= label_tag :description %>
-    <%= text_area_tag :description, @movie.description, rows: 3 %>
+    <%= label_tag :description, "Description" %>
+    <%= text_area_tag "movie[description]", @movie.description, rows: 3 %>
   </div>
 
   <%= button_tag "Update movie" %>
