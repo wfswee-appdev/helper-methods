@@ -30,8 +30,8 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new
-    @movie.title = params.fetch("title")
-    @movie.description = params.fetch("description")
+    @movie.title = params.fetch(:title)
+    @movie.description = params.fetch(:description)
 
     if @movie.valid?
       @movie.save
@@ -47,22 +47,22 @@ class MoviesController < ApplicationController
   end
 
   def update
-    movie = Movie.find(params.fetch(:id))
-    movie.title = params.fetch("title")
-    movie.description = params.fetch("description")
+    @movie = Movie.find(params.fetch(:id))
+    @movie.title = params.fetch(:title)
+    @movie.description = params.fetch(:description)
 
-    if movie.valid?
-      movie.save
-      redirect_to movie_url(movie), notice: "Movie updated successfully."
+    if @movie.valid?
+      @movie.save
+      redirect_to movie_url(@movie), notice: "Movie updated successfully."
     else
-      redirect_to movie_url(themovie), alert: "Movie failed to update successfully."
+      redirect_to movie_url(@movie), alert: "Movie failed to update successfully."
     end
   end
 
   def destroy
-    movie = Movie.find(params.fetch(:id))
+    @movie = Movie.find(params.fetch(:id))
 
-    movie.destroy
+    @movie.destroy
 
     redirect_to movies_url, notice: "Movie deleted successfully."
   end
